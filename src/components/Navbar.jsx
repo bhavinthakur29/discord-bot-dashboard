@@ -1,48 +1,75 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { HiChip, HiLogin } from "react-icons/hi";
+import { HiChip, HiMenuAlt3, HiX } from "react-icons/hi";
 
 const navItems = [
     { name: "Dashboard", to: "/" },
-    { name: "Search", to: "/search" },
     { name: "Explore", to: "/explore" },
     { name: "About", to: "/about" },
     { name: "Contact", to: "/contact" },
 ];
 
 const Navbar = () => {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const mobile = window.innerWidth < 768;
+            setIsMobile(mobile);
+            if (!mobile) setIsMobileMenuOpen(false);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
-        <nav className="bg-secondary text-text shadow-md w-full px-6">
-            <div className="container mx-auto flex items-center justify-between flex-wrap md:flex-nowrap py-4 md:py-0">
-                <div className="text-primary md:order-1">
-                    <HiChip className="h-10 w-10" />
+        <nav className="bg-zinc-900 text-white shadow-lg w-full px-6 transition-all duration-300">
+            <div className="container mx-auto flex items-center justify-between flex-wrap min-h-20 py-4">
+                {/* Logo */}
+                <div className="flex items-center gap-2 text-accent font-semibold text-xl">
+                    <HiChip className="h-8 w-8" />
+                    <span>BotDash</span>
                 </div>
-
-                <div className="order-3 w-full md:w-auto md:order-2 mt-4 md:mt-0">
-                    <ul className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0 font-semibold">
-                        {navItems.map((item) => (
-                            <li key={item.to} className="md:px-4 md:py-2">
-                                <NavLink
-                                    to={item.to}
-                                    className={({ isActive }) =>
-                                        isActive
-                                            ? "text-accent underline"
-                                            : "hover:text-primary transition-colors"
-                                    }
-                                >
-                                    {item.name}
-                                </NavLink>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                {/* Login Button */}
-                <div className="order-2 md:order-3">
-                    <button className="px-4 py-2 bg-primary hover:bg-accent text-background rounded-xl flex items-center gap-2 transition-all">
-                        <HiLogin className="h-5 w-5" />
-                        <span>Login</span>
+                {isMobile && (
+                    <button
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="text-white md:hidden"
+                        aria-label="Toggle navigation"
+                    >
+                        {isMobileMenuOpen ? (
+                            <HiX className="h-7 w-7" />
+                        ) : (
+                            <HiMenuAlt3 className="h-7 w-7" />
+                        )}
                     </button>
+                )}
+
+                {/* Nav Links */}
+                <div
+                    className={`
+            transition-all duration-300 ease-in-out overflow-hidden w-full md:w-auto
+            ${isMobile ? "flex flex-col gap-3 mt-4" : "flex gap-8 items-center"}
+            ${isMobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0 pointer-events-none"}
+            md:opacity-100 md:max-h-none md:pointer-events-auto
+            font-medium text-sm md:text-base text-gray-200
+          `}
+                >
+                    {navItems.map((item) => (
+                        <NavLink
+                            key={item.to}
+                            to={item.to}
+                            className={({ isActive }) =>
+                                isActive
+                                    ? "text-accent underline"
+                                    : "hover:text-primary transition-colors duration-200"
+                            }
+                            onClick={() => isMobile && setIsMobileMenuOpen(false)}
+                        >
+                            {item.name}
+                        </NavLink>
+                    ))}
                 </div>
             </div>
         </nav>
