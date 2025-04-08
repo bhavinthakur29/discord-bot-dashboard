@@ -1,0 +1,96 @@
+.main {
+  background-color: #42454925;
+  /* color: white; */
+  background-color: #edeaff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+.hero {
+  padding: 50px;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(249, 82, 244, 0.242);
+}
+
+.hero-description {
+  text-align: center;
+  width: 30%;
+}
+
+.hero h1 {
+  font-size: 30px;
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: rgb(74, 74, 74);
+}
+
+.hero h1 strong {
+  font-size: 35px;
+  font-weight: 900;
+  color: black;
+}
+
+.btn-group {
+  display: flex;
+  margin-top: 20px;
+  width: 300px;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+.btn-group button {
+  width: 100px;
+  height: 40px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.btn-group button:first-child {
+  background-color: rgb(137, 140, 218);
+
+  &:hover {
+    background-color: rgb(118, 121, 206);
+  }
+}
+
+.btn-group button:last-child {
+  background-color: rgb(42, 167, 69);
+
+  &:hover {
+    background-color: rgb(25, 150, 52);
+  }
+}
+
+/* ============================================================= */
+/* ============================================================= */
+
+/* =============== FEATURES =============== */
+
+.features {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.features h1 {
+  font-weight: 700;
+  margin-top: 20px;
+  text-decoration: underline;
+}
+
+.features-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}

@@ -1,0 +1,29 @@
+.footer {
+  background-color: rgb(43, 42, 42);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s ease-in-out;
+}
+
+.footer .impt-links {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.footer .impt-links a {
+  margin: 0 10px;
+  transition: 200ms ease;
+}
+
+.footer .impt-links a:hover {
+  color: cyan;
+}
+
+.slide-down {
+  transform: translateY(100%);
+}
