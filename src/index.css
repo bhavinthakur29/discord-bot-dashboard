@@ -1,37 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
 
-* {
-  padding: 0;
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-}
-
-body {
-  width: 100vw;
-  overflow-x: hidden;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-button {
-  background-color: #f4408b;
-  outline: none;
-  border: none;
-  color: white;
-  padding: 10px 15px;
-  font-size: 14px;
-  border-radius: 5px;
-  transition: 150ms ease-in-out;
-}
-
-button:hover {
-  cursor: pointer;
-  background-color: #cc276c;
-}
-
-button:active {
-  transform: scale(0.9);
+@theme {
+  --text: #e5ecea;
+  --background: #050606;
+  --primary: #a7c0ba;
+  --secondary: #496166;
+  --accent: #869da8;
 }
